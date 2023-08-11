@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -68,3 +69,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+=======
+# ToDo_Web
+This repo is the frontend of "ToDo" application that was made with ReactJS using Styled Components, that will be connected with a REST API made with NodeJS and Express, to access a collection in a MongoDB Atlas Cloud database.
+>>>>>>> ba44b841f98ed3f01e17779076344404e175ed93
