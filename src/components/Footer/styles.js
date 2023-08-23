@@ -16,5 +16,6 @@ export const Container = styled.div`
     span{
         letter-spacing: 0.5px;
         color: ${base_color3};
+        font-weight: bold;
     }
 `
