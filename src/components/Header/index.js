@@ -8,7 +8,9 @@ function Header() {
   return (
     <S.Container>
       <S.LeftSide>
+      <a href="#">
         <img src={logo} alt="logo" />
+      </a>
       </S.LeftSide>
       <S.RightSide>
         <a href="#">INÍCIO</a>

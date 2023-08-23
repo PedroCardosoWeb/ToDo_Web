@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import colors from '../../colors';
 
-const { base_color1, base_color2, base_color3 } = colors;
+const { base_color1, base_color2, base_color3, base_color4 } = colors;
 
 export const Container = styled.div`
     width: 100%;
@@ -20,6 +20,9 @@ export const LeftSide = styled.div`
     img{
         width: 110px;
         height: 50px;
+        &:hover{
+            opacity: 0.5;
+        }
     }
 `
 
@@ -29,18 +32,15 @@ export const RightSide = styled.div`
     display: flex;
     align-items: center;
     justify-content: flex-end;
-
     a{
         color: ${base_color3};
         font-weight: bold;
         text-decoration: none;
         margin: 0 10px; 
-
         &:hover{
             color: ${base_color2};
         }       
     }
-
     #notification{
         img{
             width: 25px;
@@ -55,12 +55,10 @@ export const RightSide = styled.div`
             top: -20px;
             right: 10px;
         }
-
         &:hover{
            opacity: 0.5;
         }
     }
-
     .separator::after{
         content: "|";
         margin: 0 10px;
