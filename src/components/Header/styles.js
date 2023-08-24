@@ -45,6 +45,7 @@ export const RightSide = styled.div`
         img{
             width: 25px;
             height: 30px;
+            background: none;
         }
         span{
             background: ${base_color3};
@@ -58,6 +59,8 @@ export const RightSide = styled.div`
         &:hover{
            opacity: 0.5;
         }
+        background: none;
+        border: none;
     }
     .separator::after{
         content: "|";
