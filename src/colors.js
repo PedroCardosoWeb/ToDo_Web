@@ -4,7 +4,7 @@ const colors = {
     base_color1: '#20295f',
     base_color2: '#ee6b26',
     base_color3: '#ffffff',
-    base_color4: '#ffffff', //background
+    base_color4: '#3e3e42', //background
 
     //dark theme
     // base_color1: '#252526',
