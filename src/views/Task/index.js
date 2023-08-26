@@ -6,8 +6,6 @@ import api from '../../services/api'
 import Header from '../../components/Header'
 import Footer from '../../components/Footer'
 import TypeIcons from '../../utils/typeIcons'
-import iconCalendar from '../../assets/calendar.png'
-import iconClock from '../../assets/clock.png'
 
 function Task() {
 const [lateCount, setLateCount] = useState()
@@ -53,13 +51,11 @@ const [type, setType] = useState()
         <S.Input>
             <span>Data: </span>
             <input type="date" placeholder="data" />
-            <img src={iconCalendar} alt="Calendário" />
         </S.Input>
 
         <S.Input>
             <span>Hora: </span>
             <input type="time" placeholder="hora" />
-            <img src={iconClock} alt="Hora" />
         </S.Input>
 
         <S.Options>

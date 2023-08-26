@@ -1,5 +1,7 @@
 import styled from 'styled-components'
 import colors from '../../colors';
+import iconCalendar from '../../assets/calendar.png'
+import iconClock from '../../assets/clock.png'
 
 const { base_color1, base_color2, base_color3, base_color4, base_color5 } = colors;
 
@@ -52,12 +54,17 @@ export const Input = styled.div`
         border: none;
         border-bottom: 1px solid ${base_color2};
     }
-    img {
-        width: 20px;
-        height: 20px;
-        position: relative;
-        left: 90%;
-        bottom: 35px;
+    input[type='date']::-webkit-calendar-picker-indicator {
+        background: url(${iconCalendar}) no-repeat;
+        background-size: 85%;
+        color: transparent;
+        cursor: pointer;
+    }
+    input[type='time']::-webkit-calendar-picker-indicator {
+        background: url(${iconClock}) no-repeat;
+        background-size: 85%;
+        color: transparent;
+        cursor: pointer;
     }
 `
         
