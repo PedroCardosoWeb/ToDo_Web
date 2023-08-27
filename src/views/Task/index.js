@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import * as S from './styles'
 import api from '../../services/api'
+import { useParams } from 'react-router-dom'
+import { format } from 'date-fns'
+
 
 // COMPONENTES
 import Header from '../../components/Header'
@@ -8,22 +11,39 @@ import Footer from '../../components/Footer'
 import TypeIcons from '../../utils/typeIcons'
 
 function Task() {
-const [lateCount, setLateCount] = useState()
-const [type, setType] = useState()
-const [id, setId] = useState()
-const [done, setDone] = useState(false)
-const [title, setTitle] = useState()	
-const [description, setDescription] = useState()
-const [date, setDate] = useState()
-const [hour, setHour] = useState()
-const [macaddress, setMacaddress] = useState('11:11:11:11:11:11')
-
-    async function lateVerify() {
+  const [lateCount, setLateCount] = useState()
+  const [type, setType] = useState()
+  const [id, setId] = useState()
+  const [done, setDone] = useState(false)
+  const [title, setTitle] = useState()	
+  const [description, setDescription] = useState()
+  const [date, setDate] = useState()
+  const [hour, setHour] = useState()
+  const [macaddress, setMacaddress] = useState('11:11:11:11:11:11')
+  
+  async function lateVerify() {
     await api.get(`/task/filter/late/11:11:11:11:11:11`)
     .then(response => {
       setLateCount(response.data.length)
     })
   }
+  
+  const { id: matchId } = useParams()
+
+  async function loadTaskDetails() {
+  await api.get(`/task/${matchId}`)
+  .then(response => {
+    setType(response.data.type)
+    setTitle(response.data.title)
+    setDescription(response.data.description)
+    // setDate(response.data.when.split('T')[0])
+    setDate(format(new Date(response.data.when), 'yyyy-MM-dd'))
+    // setHour(response.data.when.split('T')[1].split('.')[0])
+    setHour(format(new Date(response.data.when), 'HH:mm:ss'))
+    // setMacaddress(response.data.macaddress)
+    // setDone(response.data.done)
+  })
+}
 
   async function save() {
       await api.post('/task', {
@@ -40,6 +60,7 @@ const [macaddress, setMacaddress] = useState('11:11:11:11:11:11')
 
   useEffect(() => {
     lateVerify();
+    loadTaskDetails();
   }, [])
 
   return (

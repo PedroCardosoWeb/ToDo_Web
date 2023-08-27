@@ -9,9 +9,9 @@ function Header({lateCount, clickNotification}) {
   return (
     <S.Container>
       <S.LeftSide>
-      <a href="#">
+      <Link to="/">
         <img src={logo} alt="logo" />
-      </a>
+      </Link>
       </S.LeftSide>
       <S.RightSide>
         <Link to="/">INÍCIO</Link>
