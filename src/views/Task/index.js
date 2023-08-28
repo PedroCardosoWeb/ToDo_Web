@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import * as S from './styles'
 import api from '../../services/api'
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 import { format } from 'date-fns'
 
 
@@ -13,58 +13,75 @@ import TypeIcons from '../../utils/typeIcons'
 function Task() {
   const [lateCount, setLateCount] = useState()
   const [type, setType] = useState()
-  const [id, setId] = useState()
+  const [id, setId] = useState(useParams().id) 
   const [done, setDone] = useState(false)
   const [title, setTitle] = useState()	
   const [description, setDescription] = useState()
   const [date, setDate] = useState()
   const [hour, setHour] = useState()
   const [macaddress, setMacaddress] = useState('11:11:11:11:11:11')
+  const [myRedirect, setMyRedirect] = useState(false)
   
-  async function lateVerify() {
+  async function LateVerify() {
     await api.get(`/task/filter/late/11:11:11:11:11:11`)
     .then(response => {
       setLateCount(response.data.length)
     })
   }
   
-  const { id: matchId } = useParams()
-
-  async function loadTaskDetails() {
-  await api.get(`/task/${matchId}`)
-  .then(response => {
-    setType(response.data.type)
-    setTitle(response.data.title)
-    setDescription(response.data.description)
-    // setDate(response.data.when.split('T')[0])
-    setDate(format(new Date(response.data.when), 'yyyy-MM-dd'))
-    // setHour(response.data.when.split('T')[1].split('.')[0])
-    setHour(format(new Date(response.data.when), 'HH:mm:ss'))
-    // setMacaddress(response.data.macaddress)
-    // setDone(response.data.done)
-  })
+  // const { id: matchId } = useParams()
+  const navigate = useNavigate()
+  // setId(useParams().id)
+  
+  async function LoadTaskDetails() {
+    if(id){
+      await api.get(`/task/${id}`)
+      .then(response => {
+        setType(response.data.type)
+        setTitle(response.data.title)
+        setDescription(response.data.description)
+        setDate(format(new Date(response.data.when), 'yyyy-MM-dd'))
+        setHour(format(new Date(response.data.when), 'HH:mm:ss'))
+        setDone(response.data.done)
+    })
+  } else {
+    navigate('/task')
+  }
 }
 
-  async function save() {
+  async function Save() {
+    if(id){
+      await api.put(`/task/${id}`, {
+        macaddress,
+        done,
+        type,
+        title,
+        description,
+        when: `${date}T${hour}`,
+      }).then(() => {
+        setMyRedirect(true)
+      })
+    } else {
       await api.post('/task', {
-          macaddress,
-          type,
-          title,
-          description,
-          when: `${date}T${hour}:00.000Z`,
-          done
-        }).then(() => {
-            alert('Tarefa cadastrada com sucesso!')
-        })
+        macaddress,
+        type,
+        title,
+        description,
+        when: `${date}T${hour}`,
+      }).then(() => {
+        setMyRedirect(true)
+      })
+    }
   }
 
   useEffect(() => {
-    lateVerify();
-    loadTaskDetails();
+    LateVerify();
+    LoadTaskDetails();
   }, [])
 
   return (
     <S.Container>
+      {myRedirect && navigate('/') }
       <Header lateCount={lateCount}/>
       <S.Form>
         <S.TypeIcons>
@@ -116,7 +133,7 @@ function Task() {
         </S.Options>
 
         <S.Save>
-            <button type="button" onClick={save}>SALVAR</button>
+            <button type="button" onClick={Save}>SALVAR</button>
         </S.Save>
 
       </S.Form>
