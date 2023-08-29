@@ -14,6 +14,7 @@ export const Container = styled.div`
     justify-content: center;   
     margin: 10px;
     transition: all 0.3s ease;
+    opacity: ${props => props.done ? 0.5 : 1};
     &:hover{
         opacity: 0.5;
         cursor: pointer;

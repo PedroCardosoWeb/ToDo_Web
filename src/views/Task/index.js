@@ -62,6 +62,16 @@ function Task() {
         setMyRedirect(true)
       })
     } else {
+      if(!type)
+      return alert("Favor informar o tipo desta tarefa! (selecione um ícone no topo...)")
+        else if(!title)
+        return alert("Favor informar o título da tarefa")
+          else if(!description)
+          return alert("Favor informar a descrição da tarefa")
+            else if(!date)
+            return alert("Favor informar a data desta tarefa")
+              else if(!hour)
+              return alert("Favor informar o horário desta tarefa")
       await api.post('/task', {
         macaddress,
         type,
