@@ -67,4 +67,16 @@ export const RightSide = styled.div`
         margin: 0 10px;
         color: ${base_color3};
     }
+    button{
+        background: none;
+        border: none;
+        font-size: 16px;
+        font-weight: bold;
+        text-decoration: none;
+        color: ${base_color3};
+        margin: 0 10px; 
+        &:hover{
+            color: ${base_color2};
+        }       
+    }
 `

@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import * as S from './styles'
-import api from '../../services/api'
 import { useParams, useNavigate } from 'react-router-dom'
 import { format } from 'date-fns'
 
+import api from '../../services/api'
+import isConnected from '../../utils/isConnected'
 
 // COMPONENTES
 import Header from '../../components/Header'
@@ -90,6 +91,7 @@ function Task() {
   }
 
   useEffect(() => {
+    if(!isConnected) setMyRedirect(true)
     LoadTaskDetails();
   }, [])
 
