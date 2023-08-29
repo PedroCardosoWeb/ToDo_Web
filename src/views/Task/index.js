@@ -29,9 +29,7 @@ function Task() {
     })
   }
   
-  // const { id: matchId } = useParams()
   const navigate = useNavigate()
-  // setId(useParams().id)
   
   async function LoadTaskDetails() {
     if(id){
@@ -72,6 +70,7 @@ function Task() {
             return alert("Favor informar a data desta tarefa")
               else if(!hour)
               return alert("Favor informar o horário desta tarefa")
+      
       await api.post('/task', {
         macaddress,
         type,
@@ -81,6 +80,20 @@ function Task() {
       }).then(() => {
         setMyRedirect(true)
       })
+    }
+  }
+
+  async function Remove() {
+    const response = window.confirm('Deseja realmente excluir esta tarefa?') 
+    if(response){
+      await api.delete(`/task/${id}`)
+      .then(() => {
+        alert('Tarefa excluída com sucesso!') 
+        setMyRedirect(true)
+      }) 
+    } else {
+      alert('Ok, tudo bem! Não excluiremos esta tarefa neste momento...')
+      setMyRedirect(false)
     }
   }
 
@@ -139,7 +152,7 @@ function Task() {
                 <input type="checkbox" checked={done} onChange={() => setDone(!done)}/>
                 <span>CONCLUÍDO</span>
             </div>
-            <button type="button">EXCLUIR</button>
+            {id && <button type="button" onClick={Remove}>EXCLUIR</button>}
         </S.Options>
 
         <S.Save>
