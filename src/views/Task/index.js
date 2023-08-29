@@ -10,6 +10,7 @@ import isConnected from '../../utils/isConnected'
 import Header from '../../components/Header'
 import Footer from '../../components/Footer'
 import TypeIcons from '../../utils/typeIcons'
+import { is } from 'date-fns/locale'
 
 function Task() {
   const [type, setType] = useState()
@@ -19,7 +20,6 @@ function Task() {
   const [description, setDescription] = useState()
   const [date, setDate] = useState()
   const [hour, setHour] = useState()
-  const [macaddress, setMacaddress] = useState('11:11:11:11:11:11')
   const [myRedirect, setMyRedirect] = useState(false)
   
   const navigate = useNavigate()
@@ -43,7 +43,7 @@ function Task() {
   async function Save() {
     if(id){
       await api.put(`/task/${id}`, {
-        macaddress,
+        macaddress: isConnected,
         done,
         type,
         title,
@@ -65,7 +65,7 @@ function Task() {
               return alert("Favor informar o horário desta tarefa")
       
       await api.post('/task', {
-        macaddress,
+        macaddress: isConnected,
         type,
         title,
         description,

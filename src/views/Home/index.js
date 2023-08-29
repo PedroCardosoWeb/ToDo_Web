@@ -19,7 +19,7 @@ function Home() {
   const navigate = useNavigate()
 
   async function loadTasks() {
-    await api.get(`/task/filter/${filterActived}/11:11:11:11:11:11`)
+    await api.get(`/task/filter/${filterActived}/${isConnected}`)
     .then(response => {
       setTasks(response.data)
     })

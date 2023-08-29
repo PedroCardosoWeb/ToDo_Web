@@ -14,6 +14,8 @@ function QrCode() {
     const navigate = useNavigate()
 
     async function SaveMac() {
+        if(!mac) alert('Digite o macaddress')
+        else
         await localStorage.setItem('@todo/macaddress', mac)
         setRedirect(true)
         window.location.reload()
