@@ -11,7 +11,6 @@ import Footer from '../../components/Footer'
 import TypeIcons from '../../utils/typeIcons'
 
 function Task() {
-  const [lateCount, setLateCount] = useState()
   const [type, setType] = useState()
   const [id, setId] = useState(useParams().id) 
   const [done, setDone] = useState(false)
@@ -21,13 +20,6 @@ function Task() {
   const [hour, setHour] = useState()
   const [macaddress, setMacaddress] = useState('11:11:11:11:11:11')
   const [myRedirect, setMyRedirect] = useState(false)
-  
-  async function LateVerify() {
-    await api.get(`/task/filter/late/11:11:11:11:11:11`)
-    .then(response => {
-      setLateCount(response.data.length)
-    })
-  }
   
   const navigate = useNavigate()
   
@@ -98,14 +90,13 @@ function Task() {
   }
 
   useEffect(() => {
-    LateVerify();
     LoadTaskDetails();
   }, [])
 
   return (
     <S.Container>
       {myRedirect && navigate('/') }
-      <Header lateCount={lateCount}/>
+      <Header />
       <S.Form>
         <S.TypeIcons>
          {
