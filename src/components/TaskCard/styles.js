@@ -27,9 +27,16 @@ export const TopCard = styled.div`
     justify-content: center;
     flex-direction: column;
     max-width: 150px;
-    max-height: 180px;
+    max-height: 182px;
     h3{
         overflow: clip;
+        text-align: center;
+        position: relative;
+        margin-top: 120px;        
+    }
+    img{
+        position: absolute;
+        margin-top: -70px;
     }
 `
 
