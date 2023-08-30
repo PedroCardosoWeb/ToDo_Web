@@ -4,8 +4,8 @@ import colors from '../../colors';
 const { base_color1, base_color2, base_color3, base_color4 } = colors;
 
 export const Container = styled.div`
-    width: 250px;
-    height: 200px;
+    width: 260px;
+    height: 220px;
     box-shadow: 10px 10px 24px -4px rgba(0,0,0,0.75);
     border-radius: 10px;
     display: flex;
@@ -26,6 +26,11 @@ export const TopCard = styled.div`
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    max-width: 150px;
+    max-height: 180px;
+    h3{
+        overflow: clip;
+    }
 `
 
 export const BottomCard = styled.div`
