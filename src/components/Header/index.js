@@ -1,16 +1,20 @@
 import React, { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import * as S from './styles'
 
 import api from '../../services/api'
 import isConnected from '../../utils/isConnected'
+import clearForm from '../../utils/clearFieldsTaskDetails'
 
 import logo from '../../assets/logo.png'
 import bell from '../../assets/bell.png'
 
-
 function Header({ clickNotification }) {
   const [lateCount, setLateCount] = useState()
+  const [id, setId] = useState(useParams().id)
+
+  const url = window.location.pathname
+  
 
   async function lateVerify() {
     await api.get(`/task/filter/late/${isConnected}`)
@@ -38,7 +42,12 @@ function Header({ clickNotification }) {
       <S.RightSide>
         <Link to="/">INÍCIO</Link>
           <span className="separator"></span>
+        {
+          url === '/' ?
         <Link to="/task">NOVA TAREFA</Link>
+        :
+        <button type='button' onClick={clearForm}><a href="/task"> NOVA TAREFA</a></button>
+        }
           <span className="separator"></span>
         { 
           isConnected ?

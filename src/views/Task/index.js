@@ -10,7 +10,6 @@ import isConnected from '../../utils/isConnected'
 import Header from '../../components/Header'
 import Footer from '../../components/Footer'
 import TypeIcons from '../../utils/typeIcons'
-import { is } from 'date-fns/locale'
 
 function Task() {
   const [type, setType] = useState()
@@ -24,19 +23,17 @@ function Task() {
   
   const navigate = useNavigate()
   
-  async function LoadTaskDetails() {
-    if(id){
-      await api.get(`/task/${id}`)
-      .then(response => {
-        setType(response.data.type)
-        setTitle(response.data.title)
-        setDescription(response.data.description)
-        setDate(format(new Date(response.data.when), 'yyyy-MM-dd'))
-        setHour(format(new Date(response.data.when), 'HH:mm:ss'))
-        setDone(response.data.done)
+   async function LoadTaskDetails() {
+    if(id){ 
+    await api.get(`/task/${id}`)
+    .then(response => {
+      setType(response.data.type)
+      setTitle(response.data.title)
+      setDescription(response.data.description)
+      setDate(format(new Date(response.data.when), 'yyyy-MM-dd'))
+      setHour(format(new Date(response.data.when), 'HH:mm:ss'))
+      setDone(response.data.done)
     })
-  } else {
-    navigate('/task')
   }
 }
 
@@ -92,12 +89,12 @@ function Task() {
 
   useEffect(() => {
     if(!isConnected) setMyRedirect(true)
-    LoadTaskDetails();
+    LoadTaskDetails()
   }, [])
 
   return (
     <S.Container>
-      {myRedirect && navigate('/') }
+      {myRedirect && navigate('/')}
       <Header />
       <S.Form>
         <S.TypeIcons>
@@ -118,13 +115,15 @@ function Task() {
             onChange={e => setTitle(e.target.value)} value={title}
             />
         </S.Input>
-
-        <S.TextArea>
-            <span>Descrição: </span>
-            <textarea rows={5} placeholder="Descrição da Tarefa" 
-            onChange={e => setDescription(e.target.value)} value={description}
-            />
-        </S.TextArea>
+        
+        <S.Input>
+          <S.TextArea>
+              <span>Descrição: </span>
+              <textarea rows={5} placeholder="Descrição da Tarefa" 
+              onChange={e => setDescription(e.target.value)} value={description}
+              />
+          </S.TextArea>
+        </S.Input>
 
         <S.Input>
             <span>Data: </span>
@@ -155,6 +154,7 @@ function Task() {
       </S.Form>
       <Footer />
     </S.Container>
+    
   )
 }
 export default Task
