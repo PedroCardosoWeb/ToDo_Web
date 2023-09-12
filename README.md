@@ -1,75 +1,24 @@
 <<<<<<< HEAD
-# Getting Started with Create React App
+# ToDo Web Application
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+> Status: Developing
 
-## Available Scripts
+This repository contains the frontend of a task scheduling application, developed using the MERN stack (MongoDB/Express/React/Node).
 
-In the project directory, you can run:
+The frontend of this project was developed using React.js (create-app-react), components styled with the StyledComponents library and other resources and libraries, using Hooks in functional components, instead of classes.
+The deployment was carried out on the Netlify platform, using CI/CD through integration with GitHub.
 
-### `npm start`
+The backend, developed in javascript with Node.js, using library resources such as: express, axios, cors, mongoose, among others. It was developed in the REST API format, with information validation middleware and connection to MongoDB; It is hosted on the Vercel platform, and also uses CI/CD through integration with GitHub.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+For the database, local MongoDB was used, with deployment for cloud production, through the MongoDB Atlas Cloud platform.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Visit: [ToDo - Backend on GitHub](https://github.com/PedroCardosoWeb/ToDo)
 
-### `npm test`
+Other tools also used:
+- Insomnia (endpoints)
+- VSCode (IDE).
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+** The application is still under development, so errors that have not yet been addressed may occur, as well as the presence in the code of features that are still being implemented.
 
 ### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-=======
-# ToDo_Web
-This repo is the frontend of "ToDo" application that was made with ReactJS using Styled Components, that will be connected with a REST API made with NodeJS and Express, to access a collection in a MongoDB Atlas Cloud database.
->>>>>>> ba44b841f98ed3f01e17779076344404e175ed93
+Access and check out the partial result of this project: [ToDo - Web App on Netlify](https://todo-node-react.netlify.app/)
