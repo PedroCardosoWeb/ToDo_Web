@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Link, useParams } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import * as S from './styles'
 
 import api from '../../services/api'
@@ -11,10 +11,9 @@ import bell from '../../assets/bell.png'
 
 function Header({ clickNotification }) {
   const [lateCount, setLateCount] = useState()
-  const [id, setId] = useState(useParams().id)
+  const [isNotHome, setIsNotHome] = useState(false)
 
   const url = window.location.pathname
-  
 
   async function lateVerify() {
     await api.get(`/task/filter/late/${isConnected}`)
@@ -23,13 +22,23 @@ function Header({ clickNotification }) {
     })
   }
 
+  function overdueTasks(e) {
+    window.location.pathname = '/'
+    e.preventDefault()
+}
+
   async function Logout() {
     await localStorage.removeItem('@todo/macaddress')
     window.location.reload()
   }
 
+  function currPath(){
+    setIsNotHome(window.location.pathname !== '/' ? true : false)
+  }
+
   useEffect(() => {
     lateVerify()
+    currPath()
   })
 
   return (
@@ -54,13 +63,15 @@ function Header({ clickNotification }) {
           <button type='button' onClick={Logout}>SAIR</button> :
           <Link to="/qrcode">SINCRONIZAR SMARTPHONE</Link>
         }
-        {
+        { 
           lateCount &&
           <> {/*fragment*/}
             <span className="separator"></span>
-            <button onClick={clickNotification} id="notification">
-              <img src={bell} alt="Notificações" />
-              <span>{lateCount}</span>
+            <button onClick={ 
+              isNotHome ? overdueTasks : clickNotification 
+              } id="notification">
+                <img src={bell} alt="Notificações" />
+                <span>{lateCount}</span>
             </button>
           </>
         }

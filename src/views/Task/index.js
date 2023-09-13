@@ -23,7 +23,7 @@ function Task() {
   
   const navigate = useNavigate()
   
-   async function LoadTaskDetails() {
+    async function LoadTaskDetails() {
     if(id){ 
     await api.get(`/task/${id}`)
     .then(response => {
