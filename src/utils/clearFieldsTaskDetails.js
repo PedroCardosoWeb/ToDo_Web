@@ -3,7 +3,7 @@ function clearForm(e) {
       input => (input.value = "")
     );
     document.querySelector("textArea").value = "";
-    window.location.href = '/task'
+    // window.location.href = '/task'
     // e.preventDefault();
 }
 
