@@ -3,7 +3,7 @@ function clearForm(e) {
       input => (input.value = "")
     );
     document.querySelector("textArea").value = "";
-    window.location.pathname = '/task'
+    // window.location.pathname = '/task'
     e.preventDefault();
 }
 
