@@ -4,7 +4,7 @@ function clearForm(e) {
     );
     document.querySelector("textArea").value = "";
     window.location.href = '/task'
-    e.preventDefault();
+    // e.preventDefault();
 }
 
 export default clearForm
