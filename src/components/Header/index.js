@@ -55,10 +55,7 @@ function Header({ clickNotification }) {
           url === '/' ?
         <Link to="/task">NOVA TAREFA</Link>
         :
-        <button type='button' onClick={clearForm}>
-          <Link to="/task">NOVA TAREFA</Link>
-          {/* <a href="/task"> NOVA TAREFA</a> */}
-        </button>
+        <button type='button' onClick={clearForm}>NOVA TAREFA</button>
         }
           <span className="separator"></span>
         { 
